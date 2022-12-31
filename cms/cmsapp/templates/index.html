@@ -1,0 +1,320 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+<title>CONTENT MANAGEMENT SYSTEM</title>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+html {
+  font-family: Arial, sans-serif;
+font-size: 15px;
+scroll-behavior: smooth;
+background-color: #42523f;
+}
+section {
+height: 100vh;
+width: 100%;
+background-color: #7e8081;
+display: flex;
+align-items: center;
+justify-content: center;
+text-transform: uppercase;
+}
+#home {
+    background-image: url("");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+#about {
+background-color: #6081C3;
+}
+#footer {
+background-color: #A83E11;
+}
+nav {
+position: sticky;
+top: 0;
+background-color: #eef0f1;
+border-radius:0 0 0px 0px;
+}
+nav .container {
+width: 90%;
+max-width: 1000px;
+margin: 0 auto;
+text-align: center;
+margin-left:480px;
+padding: 10px;
+}
+nav .container ul li {
+display: inline-block;
+border-radius:5px;
+}
+nav .container ul li a {
+display: inline-block;
+text-decoration: none;
+padding: 10px 20px;
+color: black;
+}
+nav .container ul li.active {
+background-color: #3b49df;
+border-radius:30px;
+transition: 0.3s;
+}
+nav .container ul li.active a {
+color: #ffffff;
+}
+img {
+    width: 1550px;
+    height: 750px;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+ 
+.hh{
+    position:absolute;
+    text-shadow: 4px 2px 9px #000000;
+    margin-top:-600px;
+}
+.dd{
+background:transparent;
+width:80%;
+height:80%;
+margin-top:40px;
+border-radius: 15px 50px; 
+
+
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container1 {
+    border-radius: 5px;
+    background-color: #F5DEB3;
+    padding: 20px;
+  }
+  .cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    margin: 30px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .card .card_image {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+  }
+  
+  .card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+  }
+  
+  .card .card_title {
+    text-align: center;
+    border-radius: 0px 0px 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -80px;
+    height: 40px;
+  }
+  
+  .card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+  
+  .title-white {
+    color: white;
+  }
+  
+  .title-black {
+    color: black;
+  }
+  
+  @media all and (max-width: 500px) {
+    .card-list {
+      /* On small screens, we are no longer using row direction but column */
+      flex-direction: column;
+    }
+  }
+  
+  
+  /*
+  .card {
+    margin: 30px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    transition: 0.4s;
+  }
+  */
+  .centered{
+    color:lightblue;
+    font-size:50px;
+    font-weight: bold;
+    animation-name: example;
+  animation-duration: 4s;
+  text-shadow: 2px 2px 4px #000000;
+  }
+  @keyframes example {
+    from {color: red;}
+    to {color: lightblue;}
+  }
+
+  
+</style>
+<script>
+    const sections = document.querySelectorAll("section");
+const navLi = document.querySelectorAll("nav .container ul li");
+window.onscroll = () => {
+  var current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 60) {
+      current = section.getAttribute("id"); }
+  });
+
+  navLi.forEach((li) => {
+    li.classList.remove("active");
+    if (li.classList.contains(current)) {
+      li.classList.add("active");
+    }
+  });
+};
+
+</script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li class="home active"><a href="#home">Home</a></li>
+                <li class="about"><a href="#about">About</a></li>
+                <li class="contact"><a href="#contact">Contact Us</a></li>
+                <li class="footer"><a href="#footer">Reviews</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% for x in mymembers|slice:":1" %}
+    <section id="home">
+     
+        <img src="/images/{{x.banner}}">
+       
+        <div class="centered">{{x.text}}</div>
+        
+    </section>
+    <section id="about">
+        <h1 class="hh">About Our Company</h1>
+       <div class="dd">
+        <h3><i>{{x.about}}</i></h3>
+       </div>
+       {% endfor %}
+    </section>
+    <section id="contact" style="background-color:#FFFAFA;">
+        <h1 class="hh">Contact Form</h1>
+
+<div class="container1" >
+  <form action="addrecord/" method="post">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" id="fname" name="name" placeholder="Your name.." required>
+
+    <label for="lname">Email</label>
+    <input type="text" id="lname" name="email" placeholder="Your last name.." required>
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">India</option>
+      <option value="canada">Other</option>
+      
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+    </section>
+    <section id="footer">
+      <div class="cards-list">
+      {% for x in rev %}
+      
+  
+        <div class="card 1">
+          <div class="card_image"> <img src="/images/{{x.image}}"> </div>
+          <div class="card_title title-white">
+            <p>{{x.user}}</p>
+            <div style="font-size:10px; overflow:hidden;">{{x.feed}}</div>
+          </div>
+        </div>
+        
+          
+        
+        
+        
+        {% endfor %}
+      </div>
+    </section>
+    
+   
+</body>
+</html>
